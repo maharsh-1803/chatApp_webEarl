@@ -18,6 +18,8 @@ function App() {
         );
         const data = await response.json();
         setUserList(data);
+        console.log(data);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }

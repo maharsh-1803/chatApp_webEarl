@@ -40,6 +40,7 @@ export const Mybox = ({ sendId }) => {
           }
         );
         console.log(response);
+        setMessages(response.data)
       } catch (error) {
         console.log(error);
       }
@@ -59,19 +60,24 @@ export const Mybox = ({ sendId }) => {
 
   const handleSend = async () => {
     try {
-      const data = await fetchWithToken(
+      const response = await axios.post(
         `https://chatapp-webearl.onrender.com/api/messages/send/${sendId}`,
         {
-          method: "POST",
-          body: JSON.stringify({ message: typeMessage }),
+          message: typeMessage, // Body content
+        },
+        {
+          headers: {
+            jwt:  token, // Header with token
+          },
         }
       );
-      setMessages([...messages, data]);
-      setTypeMessage(""); // Clear the input field after sending the message
+      setMessages([...messages, response.data]);
+      setTypeMessage("");
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   return (
     <div className="flex flex-col">

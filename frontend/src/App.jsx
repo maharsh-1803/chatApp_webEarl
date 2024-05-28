@@ -5,6 +5,7 @@ import axios from 'axios'
 
 function App() {
   const [userList, setUserList] = useState([]);
+  console.log(userList);
   useEffect(() => {
     const getConversations = async () => {
       try {
@@ -16,10 +17,7 @@ function App() {
             },
           }
         );
-        const data = await response.json();
-        setUserList(data);
-        console.log(data);
-        console.log(response);
+        setUserList(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -32,7 +30,6 @@ function App() {
 
   const showMessage = (e) => {
     setSendId(e);
-    console.log(e);
   };
 
   const [number, setNumber] = useState("");
@@ -67,7 +64,6 @@ function App() {
       }
 
       const data = await response.json();
-      console.log(data);
       // Optionally store the token
       localStorage.setItem("chatToken", data.data.token);
     } catch (error) {
@@ -92,7 +88,7 @@ function App() {
           <button onClick={handleLogin} className="border">
             login
           </button>
-          {token && <button>Log Out</button>}
+          {token && <button onClick={localStorage.removeItem('chatToken')}>Log Out</button>}
         </div>
         <div className="grid grid-cols-[1fr,2fr]">
           <div className="border-r-2 border-gray-400 pt-8 px-10 ">

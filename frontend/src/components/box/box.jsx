@@ -8,7 +8,7 @@ const fetchWithToken = async (url, options = {}) => {
   const token = localStorage.getItem("chatToken");
   const headers = {
     "Content-Type": "application/json",
-    Authorization: token,
+    jwt: token,
     ...options.headers,
   };
 
@@ -35,7 +35,7 @@ export const Mybox = ({ sendId }) => {
           `https://chatapp-webearl.onrender.com/api/messages/${sendId}`,
           {
             headers: {
-              Authorization: token,
+              jwt: token,
             },
           }
         );

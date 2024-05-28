@@ -12,12 +12,12 @@ function App() {
           "https://chatapp-webearl.onrender.com/api/users",
           {
             headers: {
-              Authorization: token,
+              jwt: token,
             },
           }
         );
         const data = await response.json();
-        console.log(data.data.data);
+        setUserList(data.data.data);
       } catch (error) {
         console.log(error);
       }

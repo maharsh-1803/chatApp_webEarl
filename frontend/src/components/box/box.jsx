@@ -39,7 +39,7 @@ export const Mybox = ({ sendId }) => {
             },
           }
         );
-        console.log(response.data.data);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }

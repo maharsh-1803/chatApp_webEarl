@@ -17,7 +17,7 @@ function App() {
           }
         );
         const data = await response.json();
-        setUserList(data.data.data);
+        setUserList(data);
       } catch (error) {
         console.log(error);
       }

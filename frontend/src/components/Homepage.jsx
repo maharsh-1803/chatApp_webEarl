@@ -128,7 +128,7 @@ function HomePage() {
             </div>
           </>
         ) : (
-          <p className="text-gray-500">Select a user to start chatting</p>
+          <p className="text-gray-400">Select a user to start chatting</p>
         )}
       </div>
     </div>
